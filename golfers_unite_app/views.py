@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from .forms import SignUpForm, ScorecardForm
 from .models import Golfer, Scorecard
+from django.shortcuts import get_object_or_404
 
 # Render index.html
 def index(request):
@@ -59,4 +60,11 @@ def add_scorecard(request, golfer_id):
     else:
         form = ScorecardForm()
     return render(request, 'golfers_unite_app/add_scorecard.html', {'form': form})
+
+def delete_scorecard(request, scorecard_id):
+    scorecard = get_object_or_404(Scorecard, id=scorecard_id)
+    if request.method == 'POST':
+        scorecard.delete()
+        return redirect('active_golfers')  # Redirect to a relevant page after deletion
+    return render(request, 'golfers_unite_app/confirm_delete_scorecard.html', {'scorecard': scorecard})
     

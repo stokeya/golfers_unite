@@ -22,13 +22,14 @@
                             <!-- Display Scorecards for the golfer -->
                             <ul>
                                 {% for scorecard in golfer.scorecard_set.all %}
-                                    <li>{{ scorecard }}</li>
+                                    <li>Course: {{ scorecard.course_name }}, Par: {{ scorecard.par }}, Score: {{ scorecard.score }}</li>
                                 {% endfor %}
                             </ul>
                         </td>
                         <td>
                             <!-- Add Scorecard button -->
                             <a href="{% url 'add_scorecard' golfer_id=golfer.id %}" class="btn btn-primary">Add Scorecard</a>
+						
                         </td>
                     </tr>
                 {% endfor %}
@@ -36,4 +37,3 @@
         </table>
     </div>
 {% endblock %}
-

@@ -17,4 +17,5 @@ path('golfers_unite_app/login/', LoginView.as_view(template_name='login.html'), 
 path('golfers_unite_app/signup/', views.signup_view, name='signup'),
 path('golfers_unite_app/active-golfers/', views.active_golfers_view, name='active_golfers'),
 path('golfers_unite_app/add_scorecard/<int:golfer_id>/', views.add_scorecard, name='add_scorecard'),
+path('golfers_unite_app/delete-scorecard/<int:scorecard_id>/', views.delete_scorecard, name='delete_scorecard'),
 ]
