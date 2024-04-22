@@ -1,3 +1,4 @@
+from datetime import date
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -5,6 +6,10 @@ from django.contrib.auth.views import LoginView
 from .forms import SignUpForm, ScorecardForm
 from .models import Golfer, Scorecard
 from django.shortcuts import get_object_or_404
+
+
+from django.shortcuts import render
+from .scraping import scrape_golf_courses, google_search_golf_courses
 
 # Render index.html
 def index(request):
@@ -67,4 +72,16 @@ def delete_scorecard(request, scorecard_id):
         scorecard.delete()
         return redirect('active_golfers')  # Redirect to a relevant page after deletion
     return render(request, 'golfers_unite_app/confirm_delete_scorecard.html', {'scorecard': scorecard})
+
+
+def search_golf_courses(request):
+    if request.method == 'POST':
+        zipcode = request.POST.get('zipcode')
+        golf_courses = google_search_golf_courses(zipcode)
+        if golf_courses:
+            return render(request, 'golfers_unite_app/golf_courses.html', {'golf_courses': golf_courses})
+        else:
+            return render(request, 'golfers_unite_app/error.html', {'message': 'Failed to fetch golf courses.'})
+    else:
+        return render(request, 'golfers_unite_app/search_golf_courses.html')
     

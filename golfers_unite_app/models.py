@@ -22,6 +22,13 @@ class Scorecard(models.Model):
 
     def __str__(self):
         return f"{self.golfer.user.username}'s Scorecard - {self.date_played}"
+    
+class GolfCourse(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
     
 class GolferAdmin(admin.ModelAdmin):

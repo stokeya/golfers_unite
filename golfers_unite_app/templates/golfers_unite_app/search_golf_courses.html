@@ -1,0 +1,17 @@
+<!-- search.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Golf Courses</title>
+</head>
+<body>
+    <h1>Search Golf Courses</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="zipcode">Enter ZIP code:</label>
+        <input type="text" id="zipcode" name="zipcode" required>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
