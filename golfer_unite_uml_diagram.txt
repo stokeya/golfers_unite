@@ -1,0 +1,23 @@
++-------------------------------------+
+|               Golfer                |
++-------------------------------------+
+| - user: User                        |
+| - bio: TextField(blank=True)        |
+| - handicap: DecimalField            |
+| - age: PositiveIntegerField         |
++-------------------------------------+
+| + __str__()                         |
++-------------------------------------+
+
++-------------------------------------+
+|             Scorecard               |
++-------------------------------------+
+| - golfer: Golfer                    |
+| - date_played: DateField(default=timezone.now)|
+| - course_name: CharField(max_length=100) |
+| - score: PositiveIntegerField       |
+| - par: PositiveIntegerField         |
+| - holes: PositiveIntegerField(default=0)|
++-------------------------------------+
+| + __str__()                         |
++-------------------------------------+
