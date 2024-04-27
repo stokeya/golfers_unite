@@ -63,6 +63,7 @@ def welcome_view(request):
     user = request.user
     return render(request, 'golfers_unite_app/welcome.html', {'user': user})
 
+@login_required
 def active_golfers_view(request):
     # Retrieve all golfers from the database
     golfers = Golfer.objects.all()
