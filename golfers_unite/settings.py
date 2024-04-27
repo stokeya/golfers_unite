@@ -56,7 +56,7 @@ ROOT_URLCONF = 'golfers_unite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,3 +139,15 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/images/'
+
+LOGIN_REDIRECT_URL = "/"
+
+COVERAGE_MODULE_EXCLUDES = [
+    '*/migrations/*',
+    '*/tests/*',
+    '*/settings/*',
+    '*/urls.py',
+    '*/wsgi.py',
+]
+
+COVERAGE_REPORT_HTML_OUTPUT_DIR = 'coverage_report'
