@@ -20,9 +20,10 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 path('admin/', admin.site.urls),
+path("accounts/", include("django.contrib.auth.urls")),
 
 #connect path to golfers_unite_app urls
+
 path('', include('golfers_unite_app.urls')),
-path('login/', auth_views.LoginView.as_view(), name='login'),
 
 ]

@@ -1,16 +1,27 @@
-<!-- In add_scorecard.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Scorecard</title>
-</head>
-<body>
-    <h1>Add Scorecard</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+{% extends 'golfers_unite_app/base_template.html' %}
+{% block title %}Add Scorecard{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5 text-white fw-bold">Add Scorecard</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_course_name" class="form-label text-white fw-bold">Course Name:</label>
+                {{ form.course_name }}
+            </div>
+            <div class="mb-3">
+                <label for="id_par" class="form-label text-white fw-bold">Par:</label>
+                {{ form.par }}
+            </div>
+            <div class="mb-3">
+                <label for="id_score" class="form-label text-white fw-bold">Score:</label>
+                {{ form.score }}
+            </div>
+            <div class="mb-3">
+                <label for="id_holes" class="form-label text-white fw-bold">Holes:</label>
+                {{ form.holes }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}
