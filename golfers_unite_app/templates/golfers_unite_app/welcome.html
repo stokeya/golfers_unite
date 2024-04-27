@@ -1,0 +1,19 @@
+<!-- welcome.html -->
+
+{% extends "golfers_unite_app/base_template.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-white">Welcome, {{ user.username }}!</h2>
+    <p class="text-white fs-5">
+        This is a place where you can find other enthusiasts to play with! If you have played any golf courses lately, please fill out a scorecard and it will post to your account for you to Edit, Update, or Delete at your personal convenience.
+    </p>
+    <p class="text-white fs-5">
+        Please find the <a href="{% url 'active_golfers' %}" class="text-white">Active Local Golfers</a> for you to explore other like-minded individuals' profiles. Good luck and happy swinging!
+    </p>
+    
+    <!-- Button to create a scorecard -->
+    <a href="{% url 'add_scorecard' golfer_id=user.id %}" class="btn btn-primary btn-lg">Create Scorecard</a>
+
+</div>
+{% endblock %}

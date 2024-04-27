@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h2>Login</h2>
-    {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>
+{% extends "golfers_unite_app/base_template.html" %}
+
+{% block content %}
+<div class="container">
+  <h2 class="text-white">Login</h2>
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="id_username" class="form-label text-white">Username</label>
+      <input type="text" name="username" id="id_username" class="form-control form-control-lg">
+    </div>
+    <div class="mb-3">
+      <label for="id_password" class="form-label text-white">Password</label>
+      <input type="password" name="password" id="id_password" class="form-control form-control-lg">
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+  </form>
+</div>
+{% endblock %}
