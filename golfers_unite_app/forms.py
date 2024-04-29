@@ -30,7 +30,6 @@ class ScorecardForm(forms.ModelForm):
         self.fields['holes'].widget = forms.Select(choices=[(9, '9 Holes'), (18, '18 Holes')])
 
        
-
 class ScoreForm(forms.ModelForm):
     class Meta:
         model = Score
@@ -44,3 +43,5 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length=100)
     password = forms.CharField(widget=forms.PasswordInput)
 
+class ZipCodeForm(forms.Form):
+    zip_code = forms.CharField(label='ZIP Code', max_length=10)

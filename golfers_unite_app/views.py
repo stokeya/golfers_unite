@@ -4,7 +4,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.views import LoginView as BaseLoginView
-from .forms import SignUpForm, ScorecardForm, LoginForm, ScoreForm, ScoreFormSet
+
+from golfers_unite_app.scrape import scrape_golf_courses
+
+from .forms import SignUpForm, ScorecardForm, LoginForm, ScoreForm, ScoreFormSet, ZipCodeForm
 from .models import Golfer, Scorecard, Score
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -120,3 +123,16 @@ def logout_view(request):
         return redirect('index')  # Redirect to the homepage after logout
     return render(request, 'golfers_unite_app/logout.html')
            
+def search_golf_courses(request):
+    if request.method == 'POST':
+        form = ZipCodeForm(request.POST)
+        if form.is_valid():
+            zip_code = form.cleaned_data['zip_code']
+            golf_courses = scrape_golf_courses(zip_code)
+            return render(request, 'golfers_unite_app/search_results.html', {'golf_courses': golf_courses})
+    else:
+        form = ZipCodeForm()
+    return render(request, 'golfers_unite_app/local_courses.html', {'form': form})
+
+def search_results(request):
+    return render(request, 'golfers_unite_app/search_results.html')

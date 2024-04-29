@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView
 from . import views
-from .views import login_view, signup_view, add_scorecard, registerPage, CustomLoginView, edit_scorecard, delete_scorecard
+from .views import login_view, search_golf_courses, search_results, signup_view, add_scorecard, registerPage, CustomLoginView, edit_scorecard, delete_scorecard
 from django.contrib import admin
 from django.urls import reverse_lazy
 
@@ -25,4 +25,6 @@ path('golfers_unite_app/accounts/register/', views.registerPage, name = 'registe
 path('golfers_unite_app/scorecard/edit/<int:scorecard_id>/', edit_scorecard, name='edit_scorecard'),
 path('golfers_unite_app/scorecard/delete/<int:scorecard_id>/', delete_scorecard, name='delete_scorecard'),
 path('golfers_unite_app/add_scorecard/<int:golfer_id>/', views.add_scorecard, name='add_scorecard'),
+path('golfers_unite_app/local_courses', views.search_golf_courses, name='search_golf_courses'),
+path('golfers_unite_app/search_results/', views.search_results, name='search_results'),
 ]
